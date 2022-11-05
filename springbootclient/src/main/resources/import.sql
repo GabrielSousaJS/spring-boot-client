@@ -1,0 +1,10 @@
+insert into tb_client (name, cpf, income, birth_Date, children, created_At) values ('Abigail Brown', '283.242.840-10', 2300, TIMESTAMP WITH TIME ZONE '1986-11-11T00:34:40Z', 1, NOW());
+insert into tb_client (name, cpf, income, birth_Date, children, created_At) values ('Adrian Evans', '601.338.640-49', 2000, TIMESTAMP WITH TIME ZONE '1968-12-25T05:13:40Z', 5, NOW());
+insert into tb_client (name, cpf, income, birth_Date, children, created_At) values ('Albert Thomas', '290.962.600-82', 3500, TIMESTAMP WITH TIME ZONE '2000-03-09T09:14:40Z', 4, NOW());
+insert into tb_client (name, cpf, income, birth_Date, children, created_At) values ('Gilbert Wright', '873.473.400-71', 5200, TIMESTAMP WITH TIME ZONE '2001-07-27T22:22:40Z', 0, NOW());
+insert into tb_client (name, cpf, income, birth_Date, children, created_At) values ('Janet Martin', '643.539.020-75', 1200, TIMESTAMP WITH TIME ZONE '1987-08-04T23:10:12Z', 1, NOW());
+insert into tb_client (name, cpf, income, birth_Date, children, created_At) values ('Louise Clarke', '772.718.120-08', 1400, TIMESTAMP WITH TIME ZONE '1999-01-22T14:10:43Z', 3, NOW());
+insert into tb_client (name, cpf, income, birth_Date, children, created_At) values ('Julian Wood', '095.320.170-89', 900, TIMESTAMP WITH TIME ZONE '1994-06-20T16:16:56Z', 4, NOW());
+insert into tb_client (name, cpf, income, birth_Date, children, created_At) values ('Luke Skywalker', '911.564.740-43', 5230, TIMESTAMP WITH TIME ZONE '1991-09-13T12:23:40Z', 0, NOW());
+insert into tb_client (name, cpf, income, birth_Date, children, created_At) values ('Matthew Thompson', '703.756.090-16', 4300, TIMESTAMP WITH TIME ZONE '1998-10-10T09:47:40Z', 2, NOW());
+insert into tb_client (name, cpf, income, birth_Date, children, created_At) values ('Steve Jobs', '017.492.030-06', 6400, TIMESTAMP WITH TIME ZONE '1967-08-19T10:00:00Z', 3, NOW());
