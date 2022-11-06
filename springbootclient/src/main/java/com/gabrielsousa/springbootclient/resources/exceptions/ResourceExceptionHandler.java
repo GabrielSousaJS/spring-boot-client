@@ -1,6 +1,7 @@
 package com.gabrielsousa.springbootclient.resources.exceptions;
 
 import com.gabrielsousa.springbootclient.services.exceptions.ResourceNotFoundException;
+import com.gabrielsousa.springbootclient.services.exceptions.UniqueConstraintException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -24,4 +25,15 @@ public class ResourceExceptionHandler {
         return ResponseEntity.status(status).body(err);
     }
 
+    @ExceptionHandler(UniqueConstraintException.class)
+    public ResponseEntity<StandardError> uniqueException(UniqueConstraintException e, HttpServletRequest request) {
+        HttpStatus status = HttpStatus.CONFLICT;
+        StandardError err = new StandardError();
+        err.setTimestamp(Instant.now());
+        err.setStatus(status.value());
+        err.setError("Unique violation");
+        err.setMessage(e.getMessage());
+        err.setPath(request.getRequestURI());
+        return ResponseEntity.status(status).body(err);
+    }
 }
