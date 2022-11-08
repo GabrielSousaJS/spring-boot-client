@@ -3,10 +3,12 @@ package com.gabrielsousa.springbootclient.services;
 import com.gabrielsousa.springbootclient.dto.ClientDTO;
 import com.gabrielsousa.springbootclient.entities.Client;
 import com.gabrielsousa.springbootclient.repositories.ClientRepository;
-import com.gabrielsousa.springbootclient.services.exceptions.UniqueConstraintException;
+import com.gabrielsousa.springbootclient.services.exceptions.DatabaseException;
 import com.gabrielsousa.springbootclient.services.exceptions.ResourceNotFoundException;
+import com.gabrielsousa.springbootclient.services.exceptions.UniqueConstraintException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -57,6 +59,15 @@ public class ClientService {
         }
     }
 
+    public void deleteById(Long id) {
+        try {
+            repository.deleteById(id);
+        } catch (EmptyResultDataAccessException e) {
+            throw new ResourceNotFoundException("Id " + id + " not found delete");
+        } catch (DataIntegrityViolationException e) {
+            throw new DatabaseException("Integrity violation");
+        }
+    }
 
     private void updateData(Client entity, ClientDTO dto) {
         entity.setName(dto.getName());
