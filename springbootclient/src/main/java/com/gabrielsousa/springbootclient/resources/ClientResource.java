@@ -4,8 +4,7 @@ import com.gabrielsousa.springbootclient.dto.ClientDTO;
 import com.gabrielsousa.springbootclient.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -20,12 +19,8 @@ public class ClientResource {
     private ClientService service;
 
     @GetMapping
-    public ResponseEntity<Page<ClientDTO>> findAllPaged(@RequestParam(name = "page", defaultValue = "0") Integer page,
-                                                        @RequestParam(name = "linesPerPage", defaultValue = "5") Integer linesPerPage,
-                                                        @RequestParam(name = "direction", defaultValue = "ASC") String direction,
-                                                        @RequestParam(name = "orderBy", defaultValue = "name") String orderBy) {
-        PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
-        Page<ClientDTO> list = service.findAllPaged(pageRequest);
+    public ResponseEntity<Page<ClientDTO>> findAllPaged(Pageable pageable) {
+        Page<ClientDTO> list = service.findAllPaged(pageable);
         return ResponseEntity.ok().body(list);
     }
 
